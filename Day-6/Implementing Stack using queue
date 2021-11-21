@@ -1,0 +1,67 @@
+/*Question - Implement a last-in-first-out (LIFO) stack using only two queues. 
+             The implemented stack should support all the functions of a normal 
+             stack (push, top, pop, and empty).
+*/
+#include<bits/stdc++.h>
+using namespace std;
+
+class Stack{
+    queue<int> q1,q2;
+
+    public:
+    void push(int x);
+    int pop();
+    int top();
+};
+
+void Stack::push(int x)       //Push function
+{
+    q2.push(x);               //Pushing x in q2 initially when q1 is empty
+    while(!q1.empty())        
+    {                         
+        q2.push(q1.front());  //push all the elements from q1 to q2
+        q1.pop();             
+    }
+    queue<int> q= q1;         //Now, swap elements from q2 to q1
+    q1=q2;
+    q2=q;
+}
+
+int Stack::pop()
+{
+    if(q1.empty())
+    {
+        return 0;
+    }
+    q1.pop();
+}
+
+int Stack::top()
+{
+    if(q1.empty())
+    {
+        return -1;
+    }
+    else{
+        return q1.front();
+    }
+}
+
+
+int main()
+{
+    Stack st;
+    st.push(1);
+    st.push(2);
+    st.push(3);
+    st.push(4);
+
+    cout<<st.top()<<endl;
+    st.pop();
+    cout<<st.top()<<endl;
+    st.pop();
+    cout<<st.top()<<endl;
+    st.pop();
+    cout<<st.top()<<endl;
+    return 0;
+}
