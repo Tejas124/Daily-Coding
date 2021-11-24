@@ -1,0 +1,16 @@
+# Use of List and String Method
+
+s = "The quick brown fox jumps over the lazy dog"
+l = s.split(" ")
+#print(l)
+list = []
+for i in l:
+    a=s.find(i)
+    b=a+len(i)-1
+    list.append((i,a,b))
+    
+print(list)
+
+
+Output - 
+[('The', 0, 2), ('quick', 4, 8), ('brown', 10, 14), ('fox', 16, 18), ('jumps', 20, 24), ('over', 26, 29), ('the', 31, 33), ('lazy', 35, 38), ('dog', 40, 42)]
