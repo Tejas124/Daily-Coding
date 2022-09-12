@@ -1,0 +1,13 @@
+// Function to check if given number n is a power of two.
+bool isPowerofTwo(long long n){
+
+    int val=(n & (n-1));
+    if(val == 0 && n>0)
+    {
+        return true;
+    }
+    else{
+        return false;
+    }
+
+}
